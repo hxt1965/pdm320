@@ -9,5 +9,5 @@ def write():
     return
 
 def main(*argv):
-    read(argv[1])
+    read(argv[0])
     return
