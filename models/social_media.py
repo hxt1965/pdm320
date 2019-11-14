@@ -1,6 +1,3 @@
-from shared.database import Database
-
-
 class SocialMedia:
     freq_to_text = {
         '1': 'Several times a day',
@@ -13,10 +10,11 @@ class SocialMedia:
         '10': 'Empty'
     }
 
-    def __init__(self, person_id, name, freq):
+    def __init__(self, person_id, name, freq, database):
         self.person_id = person_id
         self.name = name
         self.freq = freq
+        self.database = database
 
     @staticmethod
     def create_table(database):
@@ -31,8 +29,8 @@ class SocialMedia:
         database.query(query)
         print('Drop social_medias table')
 
-    def save(self, database):
+    def save(self):
         query = 'INSERT INTO social_medias (person_id, name, freq) VALUES (%s, %s, %s)'
-        database.query(query, (self.person_id, self.freq))
+        self.database.query(query, (self.person_id, self.name, self.freq))
         print(
             f'Saving a social media with name is {self.name} person_id is {self.person_id} and frequency is {self.freq} to the database')

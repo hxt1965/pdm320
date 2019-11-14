@@ -24,7 +24,6 @@ class Person:
 
     def save(self):
         query = 'INSERT INTO persons (response_id, book_count) VALUES (%s, %s)'
-        result = self.database.query(query, (self.response_id, self.book_count))
-        print(result)
+        self.database.query(query, (self.response_id, self.book_count))
         print(
             f'Saving a persons with response_id is {self.response_id} and book_count is {self.book_count} to the database')

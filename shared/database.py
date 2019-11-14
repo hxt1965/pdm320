@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras
 
 
 class Database(object):
@@ -10,7 +11,7 @@ class Database(object):
             password='ahpohsaejaeph3Die7ez',
             port='5432'
         )
-        self._cur = self._connection.cursor()
+        self._cur = self._connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
     def query(self, query, params=None, method=None):
         if params is None:

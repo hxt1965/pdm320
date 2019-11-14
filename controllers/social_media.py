@@ -24,9 +24,17 @@ class SocialMediaController:
         for i in range(self.rows):
             response_id = int(self.df['respid'][i])
             person = Person.find_by_response_id(response_id, self.database)
-            print(person)
+            if (person is None):
+                raise Exception('Cannot find person for response_id. You may need to load your persons data again')
+
+            person_id = int(person['id'])
+
             for key in columns_to_name.keys():
+                name = columns_to_name[key]
                 if (pandas.isna(self.df[key][i])):
-                    print(response_id, columns_to_name[key], 10)
+                    freq = 10
                 else:
-                    print(response_id, columns_to_name[key], int(self.df[key][i]))
+                    freq = int(self.df[key][i])
+
+                social_media = SocialMedia(person_id, name, freq, self.database)
+                social_media.save()
