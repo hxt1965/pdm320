@@ -18,19 +18,19 @@ class SocialMedia:
 
     @staticmethod
     def create_table(database):
-        query = 'CREATE TABLE IF NOT EXISTS social_medias (id SERIAL PRIMARY KEY, person_id INTEGER REFERENCES ' \
-                'persons (id), name VARCHAR(20) NOT NULL, freq INTEGER DEFAULT 0) '
+        query = 'CREATE TABLE IF NOT EXISTS seal18_social_medias (id SERIAL PRIMARY KEY, person_id INTEGER REFERENCES ' \
+                'seal18_persons (id) ON DELETE CASCADE, name VARCHAR(20) NOT NULL, freq INTEGER DEFAULT 0) '
         database.query(query)
-        print('Create social_medias table')
+        print('Create seal18_social_medias table')
 
     @staticmethod
     def drop_table(database):
-        query = 'DROP TABLE IF EXISTS social_medias'
+        query = 'DROP TABLE IF EXISTS seal18_social_medias'
         database.query(query)
-        print('Drop social_medias table')
+        print('Drop seal18_social_medias table')
 
     def save(self):
-        query = 'INSERT INTO social_medias (person_id, name, freq) VALUES (%s, %s, %s)'
+        query = 'INSERT INTO seal18_social_medias (person_id, name, freq) VALUES (%s, %s, %s)'
         self.database.query(query, (self.person_id, self.name, self.freq))
         print(
             f'Saving a social media with name is {self.name} person_id is {self.person_id} and frequency is {self.freq} to the database')
