@@ -34,8 +34,8 @@ def main():
     database = Database()
 
     # Comment those load methods out if you need to reload data
-    load_person(file_name, database)
-    load_social_media(file_name, database)
+    #load_person(file_name, database)
+    # load_social_media(file_name, database)
     load_questions(file_name, database)
     load_opinions(file_name, database)
 

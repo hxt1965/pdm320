@@ -11,9 +11,9 @@ class Opinion:
     @staticmethod
     def create_table(database):
         query = 'CREATE TABLE IF NOT EXISTS seal18_opinions (' \
-                'person_id INTEGER REFERENCES seal18_persons(id), ' \
-                'question_id INTEGER REFERENCES seasl18_questions(question_id)),' \
-                'response INTEGER DEFAULT 9'
+                'person_id INTEGER REFERENCES seal18_persons(person_id) ON DELETE CASCADE, ' \
+                'question_id INTEGER REFERENCES seal18_questions(question_id) ON DELETE CASCADE,' \
+                'response INTEGER DEFAULT 9)'
         database.query(query)
         print('Created seal18_opinions table')
 
