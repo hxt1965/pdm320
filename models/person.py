@@ -7,7 +7,7 @@ class Person:
 
     @staticmethod
     def create_table(database):
-        query = 'CREATE TABLE IF NOT EXISTS seal18_persons (person_id PRIMARY KEY, ' \
+        query = 'CREATE TABLE IF NOT EXISTS seal18_persons (person_id INTEGER PRIMARY KEY, ' \
                 'book_count INTEGER DEFAULT 0, state INTEGER) '
         database.query(query)
         print('Create seal18_persons table')
@@ -24,7 +24,7 @@ class Person:
         return database.query(query, (person_id,), 'fetchone')
 
     def save(self):
-        query = 'INSERT INTO seal18_persons (response_id, book_count, state) VALUES (%s, %s, %s)'
+        query = 'INSERT INTO seal18_persons (person_id, book_count, state) VALUES (%s, %s, %s)'
         self.database.query(query, (self.person_id, self.book_count, self.state))
         print(
             f'Saving a persons with response_id is {self.person_id} and book_count is {self.book_count} to the database')
