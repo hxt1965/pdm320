@@ -1,6 +1,7 @@
 questions = ['eminuse', 'intmob', 'intfreq', 'pial5a', 'pial5b', 'pial5c', 'pial5d', 'pial11', 'pial11a', 'pial12', 'books1', 'books2a', 'books2b', 'books2c']
 
-class Question: 
+
+class Question:
     def __init__(self, question_id, question_attr, database):
         self.question_id = question_id
         self.question_attr = question_attr
@@ -25,7 +26,7 @@ class Question:
         self.database.query(query, (int(self.question_id), self.question_attr))
         print('Saved question ', self.question_attr)
 
-    #Return question instance to opinions 
+    # Return question instance to opinions
     def find_by_question_attr(self, question_str):
         query = 'SELECT question_id FROM seal18_questions WHERE question_attr LIKE \'(%s)\''
         self.database.query(query, (question_str))
