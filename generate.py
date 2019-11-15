@@ -1,11 +1,8 @@
-import demographics as dem
 import devices as dev
-import opinions as op
-
-from controllers.person import PersonController
-from controllers.social_media import SocialMediaController
 from controllers.opinions import OpinionController
+from controllers.person import PersonController
 from controllers.questions import QuestionsController
+from controllers.social_media import SocialMediaController
 from shared.database import Database
 
 
@@ -18,9 +15,11 @@ def load_social_media(file_name, database):
     social_media_controller = SocialMediaController(file_name, database)
     social_media_controller.init_table_values()
 
+
 def load_opinions(file_name, database):
     opinion_controller = OpinionController(file_name, database)
     opinion_controller.init_table_values()
+
 
 def load_questions(file_name, database):
     question_controller = QuestionsController(file_name, database)
@@ -40,8 +39,6 @@ def main():
     # load_questions(file_name, database)
     # load_opinions(file_name, database)
 
-    op.main(file_name)
-    dem.main(file_name)
     dev.main(file_name)
 
     return
