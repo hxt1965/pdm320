@@ -1,6 +1,7 @@
 import pandas
 
 from models.opinions import Opinion
+from models.questions import Question
 
 class OpinionController:
 
@@ -17,11 +18,12 @@ class OpinionController:
         Opinion.drop_table(self.database)
         Opinion.create_table(self.database)
 
-        for i in range(self.rows):
+        for i in range(1, 2002):
             q_num = 1
             for col in op_list:
-                person_id = int(i+1)
-                
-                op = Opinion(person_id, q_num, int(df[i][col]), self.database)
-                op.save()
+                person_id = int(i)
+                if i in df.respid:
+                    op = Opinion(person_id, q_num, int(df[col][i]), self.database)
+                    op.save()
+                q_num = q_num + 1
 

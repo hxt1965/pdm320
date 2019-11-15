@@ -24,10 +24,10 @@ class Question:
 
     def save(self):
         query = 'INSERT INTO seal18_questions (question_id, question_attr)'
-        self.database.query(query, (self.question_id, self.question_attr))
+        self.database.query(query, (int(self.question_id), self.question_attr))
         print('Saved question ', self.question_attr)
 
     #Return question instance to opinions 
     def find_by_question_attr(self, question_str):
-        query = 'SELECT question_id FROM seal18_questions'
-        return 
+        query = 'SELECT question_id FROM seal18_questions WHERE question_attr LIKE \'(%s)\''
+        self.database.query(query, (question_str))
