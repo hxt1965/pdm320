@@ -1,6 +1,4 @@
-self.questions = ['eminuse', 'intmob', 'intfreq', 'pial5a', 'pial5b', 'pial5c', 'pial5d',
-                'pial11', 'pial11a', 'pial12', 'books1', 'books2a',
-                'books2b', 'books2c']
+questions = ['eminuse', 'intmob', 'intfreq', 'pial5a', 'pial5b', 'pial5c', 'pial5d', 'pial11', 'pial11a', 'pial12', 'books1', 'books2a', 'books2b', 'books2c']
 
 class Question: 
     def __init__(self, question_id, question_attr, database):
@@ -12,7 +10,7 @@ class Question:
     def create_table(database):
         query = 'CREATE TABLE IF NOT EXISTS seal18_questions (' \
                 'question_id INTEGER PRIMARY KEY,' \
-                'question_attr VARCHAR(20) NOT NULL'
+                'question_attr VARCHAR(20) NOT NULL)'
         database.query(query)
         print('Created seal18_questions table')
 
@@ -23,7 +21,7 @@ class Question:
         print('Dropped seal18_questions table')
 
     def save(self):
-        query = 'INSERT INTO seal18_questions (question_id, question_attr)'
+        query = 'INSERT INTO seal18_questions (question_id, question_attr) VALUES (%s, %s)'
         self.database.query(query, (int(self.question_id), self.question_attr))
         print('Saved question ', self.question_attr)
 
