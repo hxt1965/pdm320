@@ -19,7 +19,7 @@ class SocialMedia:
     @staticmethod
     def create_table(database):
         query = 'CREATE TABLE IF NOT EXISTS seal18_social_medias (id SERIAL PRIMARY KEY, person_id INTEGER REFERENCES ' \
-                'seal18_persons (id) ON DELETE CASCADE, name VARCHAR(20) NOT NULL, freq INTEGER DEFAULT 0) '
+                'seal18_persons (person_id) ON DELETE CASCADE, name VARCHAR(20) NOT NULL, freq INTEGER DEFAULT 0) '
         database.query(query)
         print('Create seal18_social_medias table')
 

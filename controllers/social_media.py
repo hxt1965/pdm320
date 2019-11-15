@@ -1,6 +1,5 @@
 import pandas
 
-from models.person import Person
 from models.social_media import SocialMedia
 
 
@@ -23,12 +22,6 @@ class SocialMediaController:
 
         for i in range(self.rows):
             response_id = int(self.df['respid'][i])
-            person = Person.find_by_response_id(response_id, self.database)
-            if (person is None):
-                raise Exception('Cannot find person for response_id. You may need to load your persons data again')
-
-            person_id = int(person['id'])
-
             for key in columns_to_name.keys():
                 name = columns_to_name[key]
                 if (pandas.isna(self.df[key][i])):
@@ -36,5 +29,5 @@ class SocialMediaController:
                 else:
                     freq = int(self.df[key][i])
 
-                social_media = SocialMedia(person_id, name, freq, self.database)
+                social_media = SocialMedia(response_id, name, freq, self.database)
                 social_media.save()

@@ -17,8 +17,9 @@ class PersonController:
         for i in range(self.rows):
             response_id = int(self.df['respid'][i])
             book_count = int(self.df['books1'][i])
-            person = Person(response_id, book_count, self.database)
+            state = int(self.df['state'][i])
+            person = Person(response_id, book_count, state, self.database)
             person.save()
 
     def find(self, response_id):
-        return Person.find_by_response_id(response_id, self.database)
+        return Person.find_by_id(response_id, self.database)
