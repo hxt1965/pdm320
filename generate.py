@@ -1,4 +1,3 @@
-import devices as dev
 from controllers.demographics import DemographicsController
 from controllers.opinions import OpinionController
 from controllers.person import PersonController
@@ -44,9 +43,7 @@ def main():
     # load_social_media(file_name, database)
     # load_questions(file_name, database)
     # load_opinions(file_name, database)
-    load_demographics(file_name, database)
-
-    dev.main(file_name)
+    # load_demographics(file_name, database)
 
     return
 

@@ -37,8 +37,10 @@ class Demographics:
         income = int(self.info['income']) if self.info['income'] is not None else None
         party = int(self.info['party']) if self.info['party'] is not None else None
         partyLean = int(self.info['partyLean']) if self.info['partyLean'] is not None else None
+
         query = 'INSERT INTO seal18_demographics (person_id, sex, age, maritalStatus, education, employment, race, ' \
                 'income, party, partyLean) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) '
+
         self.db.query(query,
                       (self.person_id, sex, age, maritalStatus, education, employment, race, income, party, partyLean))
         print(f'Saving a demographics for person with id {self.person_id} and info {self.info} to the database')
