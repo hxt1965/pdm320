@@ -1,4 +1,5 @@
 from controllers.demographics import DemographicsController
+from controllers.device import DeviceController
 from controllers.opinions import OpinionController
 from controllers.person import PersonController
 from controllers.questions import QuestionsController
@@ -31,6 +32,11 @@ def load_demographics(file_name, database):
     demographics_controller.init_table_values()
 
 
+def load_devices(file_name, database):
+    device_controller = DeviceController(file_name, database)
+    device_controller.init_table_values()
+
+
 def main():
     file_name = 'trends.csv'
 
@@ -44,6 +50,7 @@ def main():
     # load_questions(file_name, database)
     # load_opinions(file_name, database)
     # load_demographics(file_name, database)
+    load_devices(file_name, database)
 
     return
 
