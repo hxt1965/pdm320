@@ -50,7 +50,7 @@ def main():
     # load_questions(file_name, database)
     # load_opinions(file_name, database)
     # load_demographics(file_name, database)
-    load_devices(file_name, database)
+    # load_devices(file_name, database)
 
     return
 
