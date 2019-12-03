@@ -1,12 +1,9 @@
-
-
 class Opinion:
     def __init__(self, person_id, question_id, response, database):
         self.person_id = person_id
         self.question_id = question_id
         self.response = response
         self.database = database
-
 
     @staticmethod
     def create_table(database):
@@ -23,11 +20,11 @@ class Opinion:
         database.query(query)
         print('Drop seal18_opinions table')
 
-    #@staticmethod
-    #def find_by_person_question_id(person_id, question_id, database):
+    # @staticmethod
+    # def find_by_person_question_id(person_id, question_id, database):
     #    return 
 
-    #run query 
+    # run query
     def save(self):
         query = 'INSERT INTO seal18_opinions (person_id, question_id, response) VALUES (%s, %s, %s)'
         self.database.query(query, (self.person_id, self.question_id, self.response))
