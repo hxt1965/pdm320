@@ -6,7 +6,7 @@ class Database(object):
     def __init__(self):
         self._connection = psycopg2.connect(
             host='reddwarf.cs.rit.edu',
-            dbname='postgres',
+            dbname='p32003f',
             user='p32003f',
             password='ahpohsaejaeph3Die7ez',
             port='5432'

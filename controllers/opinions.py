@@ -25,11 +25,11 @@ class OpinionController:
         for i in range(1, 2002):
             q_num = 1
             for col in op_list:
-                person_id = int(i)
-                if i in self.df.respid:
-                    resp = self.df[col][i]
-                    resp = 9 if math.isnan(resp) else int(resp)
-                    op = Opinion(person_id, q_num, resp, self.database)
-                    op.save()
+                person_id = int(self.df['respid'][i])
+                #if i in self.df.respid:
+                resp = self.df[col][i]
+                resp = 9 if math.isnan(resp) else int(resp)
+                op = Opinion(person_id, q_num, resp, self.database)
+                op.save()
                 q_num = q_num + 1
 

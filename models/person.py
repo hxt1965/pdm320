@@ -14,7 +14,7 @@ class Person:
 
     @staticmethod
     def drop_table(database):
-        query = 'DROP TABLE IF EXISTS seal18_persons'
+        query = 'DROP TABLE IF EXISTS seal18_persons CASCADE'
         database.query(query)
         print('Drop seal18_persons table')
 
